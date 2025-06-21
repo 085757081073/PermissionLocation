@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoMotorcycle - Izin Lokasi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+      padding: 40px 30px;
+    }
+    
+    .logo {
+      font-size: 36px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    
+    .logo i {
+      color: #3498db;
+    }
+    
+    .permission-icon {
+      font-size: 80px;
+      color: #3498db;
+      margin: 20px 0;
+      animation: pulse 2s infinite;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+    
+    .description {
+      color: #555;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    .permission-btn {
+      display: inline-block;
+      padding: 18px 40px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+      max-width: 350px;
+      margin: 20px auto;
+    }
+    
+    .permission-btn:hover {
+      background: #2980b9;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(52, 152, 219, 0.5);
+    }
+    
+    .permission-btn:active {
+      transform: translateY(1px);
+    }
+    
+    .features {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: left;
+    }
+    
+    .features h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    
+    .feature i {
+      color: #3498db;
+      font-size: 20px;
+      margin-top: 3px;
+    }
+    
+    .manual-fallback {
+      margin-top: 25px;
+      font-size: 16px;
+    }
+    
+    .manual-fallback a {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .manual-fallback a:hover {
+      text-decoration: underline;
+    }
+    
+    .privacy-note {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #777;
+      line-height: 1.5;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px 20px;
+      }
+      
+      .logo {
+        font-size: 28px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .description {
+        font-size: 16px;
+      }
+      
+      .permission-btn {
+        padding: 16px 30px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <i class="fas fa-motorcycle"></i>
+      <span>GoMotorcycle</span>
+    </div>
+    
+    <div class="permission-icon">
+      <i class="fas fa-location-dot"></i>
+    </div>
+    
+    <h1>Akses Lokasi Diperlukan</h1>
+    
+    <p class="description">
+      Untuk memberikan layanan terbaik, GoMotorcycle memerlukan akses ke lokasi perangkat Anda. 
+      Ini membantu kami menemukan driver terdekat dan menampilkan rute optimal.
+    </p>
+    
+    <button id="permission-btn" class="permission-btn">
+      <i class="fas fa-check-circle"></i>
+      Izinkan Akses Lokasi
+    </button>
+    
+    <div class="features">
+      <h2><i class="fas fa-shield-alt"></i> Mengapa kami memerlukan akses?</h2>
+      <div class="feature-list">
+        <div class="feature">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>Menemukan driver terdekat</strong>
+            <p>Mencari driver yang paling dekat dengan lokasi Anda</p>
+          </div>
+        </div>
+        
+        <div class="feature">
+          <i class="fas fa-route"></i>
+          <div>
+            <strong>Menampilkan rute optimal</strong>
+            <p>Menghitung rute tercepat dan terpendek untuk perjalanan Anda</p>
+          </div>
+        </div>
+        
+        <div class="feature">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>Estimasi waktu kedatangan</strong>
+            <p>Memberikan perkiraan waktu kedatangan driver yang akurat</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="manual-fallback">
+      <p>Jika tombol di atas tidak berfungsi, <a href="#" id="manual-guide">ikuti panduan ini</a> untuk mengaktifkan lokasi manual.</p>
+    </div>
+    
+    <div class="privacy-note">
+      <p><i class="fas fa-lock"></i> Kami menghargai privasi Anda. Lokasi Anda hanya digunakan untuk keperluan layanan dan tidak akan dibagikan ke pihak lain.</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const permissionBtn = document.getElementById('permission-btn');
+      const manualGuide = document.getElementById('manual-guide');
+      
+      // Fungsi untuk meminta izin lokasi
+      function requestLocationPermission() {
+        if (!navigator.geolocation) {
+          showError('Browser Anda tidak mendukung fitur geolokasi');
+          return;
+        }
+        
+        // Tampilkan indikator loading
+        permissionBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Meminta izin...';
+        permissionBtn.disabled = true;
+        
+        // Minta izin lokasi
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            // Izin diberikan
+            showSuccess('Lokasi berhasil diakses! Mengarahkan ke aplikasi...');
+            
+            // Simulasi redirect ke halaman utama
+            setTimeout(() => {
+              window.location.href = 'home.html'; // Ganti dengan URL aplikasi utama
+            }, 1500);
+          },
+          function(error) {
+            // Izin ditolak
+            permissionBtn.innerHTML = '<i class="fas fa-check-circle"></i> Izinkan Akses Lokasi';
+            permissionBtn.disabled = false;
+            
+            switch(error.code) {
+              case error.PERMISSION_DENIED:
+                showError('Izin lokasi ditolak. Silakan aktifkan di pengaturan browser Anda.');
+                break;
+              case error.POSITION_UNAVAILABLE:
+                showError('Informasi lokasi tidak tersedia.');
+                break;
+              case error.TIMEOUT:
+                showError('Permintaan lokasi melebihi batas waktu.');
+                break;
+              default:
+                showError('Terjadi kesalahan saat meminta lokasi.');
+            }
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+          }
+        );
+      }
+      
+      // Event listener untuk tombol izin
+      permissionBtn.addEventListener('click', requestLocationPermission);
+      
+      // Event listener untuk panduan manual
+      manualGuide.addEventListener('click', function(e) {
+        e.preventDefault();
+        showManualGuide();
+      });
+      
+      // Fungsi untuk menampilkan panduan manual
+      function showManualGuide() {
+        const guideContent = `
+          <div style="text-align: left; padding: 20px;">
+            <h3 style="margin-bottom: 15px; color: #2c3e50; display: flex; align-items: center; gap: 10px;">
+              <i class="fas fa-map-signs"></i> Panduan Mengaktifkan Lokasi
+            </h3>
+            
+            <div style="margin-bottom: 20px;">
+              <h4 style="margin: 15px 0 10px; color: #3498db; display: flex; align-items: center; gap: 8px;">
+                <i class="fab fa-android"></i> Untuk Android
+              </h4>
+              <ol style="padding-left: 20px; line-height: 1.8;">
+                <li>Buka <strong>Settings</strong> > <strong>Location</strong></li>
+                <li>Aktifkan lokasi dengan menggeser tombol</li>
+                <li>Pilih mode <strong>High accuracy</strong></li>
+                <li>Buka browser Chrome > ketuk ikon 🔒 di address bar</li>
+                <li>Pilih <strong>Site settings</strong> > <strong>Location</strong></li>
+                <li>Pilih <strong>Allow</strong> untuk GoMotorcycle</li>
+              </ol>
+            </div>
+            
+            <div>
+              <h4 style="margin: 15px 0 10px; color: #3498db; display: flex; align-items: center; gap: 8px;">
+                <i class="fab fa-apple"></i> Untuk iPhone
+              </h4>
+              <ol style="padding-left: 20px; line-height: 1.8;">
+                <li>Buka <strong>Settings</strong> > <strong>Privacy</strong></li>
+                <li>Pilih <strong>Location Services</strong></li>
+                <li>Aktifkan lokasi dengan menggeser tombol</li>
+                <li>Gulir ke bawah dan pilih browser yang Anda gunakan</li>
+                <li>Pilih <strong>While Using the App</strong></li>
+                <li>Kembali ke aplikasi dan refresh halaman</li>
+              </ol>
+            </div>
+          </div>
+        `;
+        
+        // Tampilkan panduan sebagai alert
+        alert(guideContent);
+      }
+      
+      // Fungsi untuk menampilkan pesan sukses
+      function showSuccess(message) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'custom-alert';
+        alertDiv.style = `
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #2ecc71;
+          color: white;
+          padding: 15px 25px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          animation: fadeIn 0.5s;
+        `;
+        
+        alertDiv.innerHTML = `
+          <i class="fas fa-check-circle"></i>
+          <span>${message}</span>
+        `;
+        
+        document.body.appendChild(alertDiv);
+        
+        // Hilangkan alert setelah 3 detik
+        setTimeout(() => {
+          alertDiv.style.animation = 'fadeOut 0.5s forwards';
+          setTimeout(() => {
+            alertDiv.remove();
+          }, 500);
+        }, 3000);
+      }
+      
+      // Fungsi untuk menampilkan pesan error
+      function showError(message) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'custom-alert';
+        alertDiv.style = `
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #e74c3c;
+          color: white;
+          padding: 15px 25px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          animation: fadeIn 0.5s;
+        `;
+        
+        alertDiv.innerHTML = `
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>${message}</span>
+        `;
+        
+        document.body.appendChild(alertDiv);
+        
+        // Hilangkan alert setelah 5 detik
+        setTimeout(() => {
+          alertDiv.style.animation = 'fadeOut 0.5s forwards';
+          setTimeout(() => {
+            alertDiv.remove();
+          }, 500);
+        }, 5000);
+      }
+      
+      // Tambahkan style untuk animasi
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-20px) translateX(-50%); }
+          to { opacity: 1; transform: translateY(0) translateX(-50%); }
+        }
+        @keyframes fadeOut {
+          from { opacity: 1; transform: translateY(0) translateX(-50%); }
+          to { opacity: 0; transform: translateY(-20px) translateX(-50%); }
+        }
+      `;
+      document.head.appendChild(style);
+      
+      // Coba deteksi apakah izin sudah diberikan sebelumnya
+      if (navigator.permissions) {
+        navigator.permissions.query({name: 'geolocation'}).then(permissionStatus => {
+          if (permissionStatus.state === 'granted') {
+            showSuccess('Lokasi sudah diizinkan! Mengarahkan ke aplikasi...');
+            setTimeout(() => {
+              window.location.href = 'home.html'; // Ganti dengan URL aplikasi utama
+            }, 1500);
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
